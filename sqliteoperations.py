@@ -48,7 +48,7 @@ def update(db_name, quantity, price, item):
 def search_db(db_name, item):
 	conn = sqlite3.connect(db_name)
 	cur = conn.cursor()
-	cur.execute("SELECT * FROM store WHERE item =?", (item))
+	cur.execute("SELECT * FROM store WHERE item =?", (item,))
 	rows = cur.fetchall()
 	conn.close()
 	return rows
