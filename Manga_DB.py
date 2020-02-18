@@ -6,11 +6,11 @@ from sqliteoperations import *
 
 def manga_search():
 	books = search_db("mangadb.db", title_val.get())
-	if books != None:
+	if books != []:
 		mangaList.delete("1.0", END)
 		mangaList.insert(END, books)
 	else:
-		mangaList.delete("1.0", END)
+		#mangaList.delete("1.0", END)
 		mangaList.insert(END, "Book not found")
 
 def addManga():
