@@ -20,7 +20,7 @@ def insert(item, quantity, price):
 
 
 create_table()
-#insert("Wine Glass", 8, 10)
+insert("Wine Glass", 8, 10)
 #insert("Coffee Cup", 10, 5)
 
 def view():

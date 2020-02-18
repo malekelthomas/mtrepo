@@ -1,7 +1,11 @@
 #!/usr/bin/env python3
 
 from tkinter import *
+from sqliteoperations import *
 
+
+def search():
+	pass
 
 window = Tk()
 
@@ -41,38 +45,25 @@ for i in range(1000):
 sb.config(command=mangaList.yview)
 
 
-#search, add buttons
+#view all, search, add, update, delete, close buttons
+
+viewALL = Button(window, height = 1, width = 5, text = "View All") 
+viewALL.grid(row = 1, column = 4)
 
 search = Button(window, height = 1, width = 5, text = "Search") 
-search.grid(row = 1, column = 4)
+search.grid(row = 2, column = 4)
 
 add = Button(window, height = 1, width = 5, text = "Add") 
-add.grid(row = 2, column = 4)
+add.grid(row = 3, column = 4)
 
 update = Button(window, height = 1, width = 5, text = "Update") 
-update.grid(row = 3, column = 4)
+update.grid(row = 4, column = 4)
 
 delete = Button(window, height = 1, width = 5, text = "Delete") 
-delete.grid(row = 4, column = 4)
+delete.grid(row = 5, column = 4)
 
 close = Button(window, height = 1, width = 5, text = "Close") 
-close.grid(row = 5, column = 4)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+close.grid(row = 6, column = 4)
 
 window.mainloop()
+
