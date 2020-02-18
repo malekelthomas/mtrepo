@@ -21,9 +21,7 @@ def insert(db_name, item, quantity, price):
 	conn.close()
 
 
-create_table()
-insert("Wine Glass", 8, 10)
-#insert("Coffee Cup", 10, 5)
+
 
 def view(db_name):
 	conn = sqlite3.connect(db_name)

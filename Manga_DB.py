@@ -10,7 +10,10 @@ def manga_search():
 		mangaList.delete("1.0", END)
 		mangaList.insert(END, books)
 
-def
+def addManga():
+	pass
+
+create_table("mangadb.db")
 
 window = Tk()
 
