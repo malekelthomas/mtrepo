@@ -10,8 +10,11 @@ def manga_search():
 		mangaList.delete("1.0", END)
 		mangaList.insert(END, books)
 	else:
-		#mangaList.delete("1.0", END)
-		mangaList.insert(END, "Book not found")
+		if len(mangaList.get(0, END)) == 0:
+			mangaList.insert(END, "Book not found")
+		else:
+			mangaList.delete(0, END)
+			mangaList.insert(END, "Book not found")
 
 def addManga():
 	pass
