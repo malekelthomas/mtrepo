@@ -4,6 +4,8 @@ import sqlite3
 # 3 write an sql query
 # 4 commit changes
 # 5 close connection
+
+
 def create_table(db_name):
 	conn = sqlite3.connect(db_name)
 	cur = conn.cursor()
@@ -44,4 +46,12 @@ def update(db_name, quantity, price, item):
 	cur.execute("UPDATE store SET quantity=?, price = ? WHERE item =?", (quantity, price, item))
 	conn.commit()
 	conn.close()
+	
+def search(db_name, item):
+	conn = sqlite3.connect(db_name)
+	cur = conn.cursor()
+	cur.execute("SELECT * FROM store WHERE item =?", (item))
+	rows = cur.fetchall()
+	conn.close()
+	return rows
 
