@@ -5,7 +5,7 @@ import sqlite3
 # 4 commit changes
 # 5 close connection
 def create_table(db_name):
-	conn = sqlite3.connect(db_name=)
+	conn = sqlite3.connect(db_name)
 	cur = conn.cursor()
 	cur.execute("CREATE TABLE IF NOT EXISTS store (item TEXT, quantity INTEGER, price REAL)")
 	conn.commit()
