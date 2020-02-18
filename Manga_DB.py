@@ -30,7 +30,7 @@ sb.grid(row = 1, column = 1)
 
 #listbox
 
-mangaList = Listbox(window, yscrollcommand = sb.set)
+mangaList = Listbox(window, height = 10, width = 20, yscrollcommand = sb.set)
 mangaList.grid(row = 1, column = 0)
 
 #test insert
@@ -44,19 +44,19 @@ sb.config(command=mangaList.yview)
 #search, add buttons
 
 search = Button(window, height = 1, width = 5, text = "Search") 
-search.grid(row = 1, column = 2)
+search.grid(row = 1, column = 4)
 
 add = Button(window, height = 1, width = 5, text = "Add") 
-add.grid(row = 2, column = 2)
+add.grid(row = 2, column = 4)
 
 update = Button(window, height = 1, width = 5, text = "Update") 
-update.grid(row = 3, column = 2)
+update.grid(row = 3, column = 4)
 
 delete = Button(window, height = 1, width = 5, text = "Delete") 
-delete.grid(row = 4, column = 2)
+delete.grid(row = 4, column = 4)
 
 close = Button(window, height = 1, width = 5, text = "Close") 
-close.grid(row = 5, column = 2)
+close.grid(row = 5, column = 4)
 
 
 
