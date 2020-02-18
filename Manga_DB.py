@@ -4,8 +4,13 @@ from tkinter import *
 from sqliteoperations import *
 
 
-def search():
-	pass
+def manga_search():
+	books = search_db("mangadb", title_val.get())
+	if books != None:
+		mangaList.delete("1.0", END)
+		mangaList.insert(END, books)
+
+def
 
 window = Tk()
 
@@ -37,9 +42,6 @@ sb.grid(row = 1, column = 1)
 mangaList = Listbox(window, height = 10, width = 20, yscrollcommand = sb.set)
 mangaList.grid(row = 1, column = 0)
 
-#test insert
-for i in range(1000):
-	mangaList.insert(END, str(i))
 
 #connect scrollbar to listbox vertically
 sb.config(command=mangaList.yview)
@@ -50,16 +52,16 @@ sb.config(command=mangaList.yview)
 viewALL = Button(window, height = 1, width = 5, text = "View All") 
 viewALL.grid(row = 1, column = 4)
 
-search = Button(window, height = 1, width = 5, text = "Search") 
+search = Button(window, height = 1, width = 5, text = "Search", command = manga_search) 
 search.grid(row = 2, column = 4)
 
-add = Button(window, height = 1, width = 5, text = "Add") 
+add_entry = Button(window, height = 1, width = 5, text = "Add") 
 add.grid(row = 3, column = 4)
 
-update = Button(window, height = 1, width = 5, text = "Update") 
+update_entry = Button(window, height = 1, width = 5, text = "Update") 
 update.grid(row = 4, column = 4)
 
-delete = Button(window, height = 1, width = 5, text = "Delete") 
+delete_entry = Button(window, height = 1, width = 5, text = "Delete") 
 delete.grid(row = 5, column = 4)
 
 close = Button(window, height = 1, width = 5, text = "Close") 
