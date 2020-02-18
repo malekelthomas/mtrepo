@@ -9,14 +9,14 @@ import sqlite3
 def create_table(db_name):
 	conn = sqlite3.connect(db_name)
 	cur = conn.cursor()
-	cur.execute("CREATE TABLE IF NOT EXISTS store (item TEXT, quantity INTEGER, price REAL)")
+	cur.execute("CREATE TABLE IF NOT EXISTS catalog (book_name TEXT, isbn TEXT)")
 	conn.commit()
 	conn.close()
 
-def insert(db_name, item, quantity, price):
+def insert(db_name, book_name, isbn):
 	conn = sqlite3.connect(db_name)
 	cur = conn.cursor()
-	cur.execute("INSERT INTO store VALUES (?,?,?)",(item, quantity, price))
+	cur.execute("INSERT INTO catalog VALUES (?,?)",(book_name, isbn))
 	conn.commit()
 	conn.close()
 
@@ -26,29 +26,29 @@ def insert(db_name, item, quantity, price):
 def view(db_name):
 	conn = sqlite3.connect(db_name)
 	cur = conn.cursor()
-	cur.execute("SELECT * FROM store")
+	cur.execute("SELECT * FROM catalog")
 	rows = cur.fetchall()
 	conn.close()
 	return rows
 
-def delete(db_name, item):
+def delete(db_name, book_name, isbn):
 	conn = sqlite3.connect(db_name)
 	cur = conn.cursor()
-	cur.execute("DELETE FROM store WHERE item =?", (item,))
+	cur.execute("DELETE FROM catalog WHERE book_name =? AND isbn =? ", (book_name, isbn))
 	conn.commit()
 	conn.close()
 
-def update(db_name, quantity, price, item):
+def update(db_name, newBookName, book_name, isbn):
 	conn = sqlite3.connect(db_name)
 	cur = conn.cursor()
-	cur.execute("UPDATE store SET quantity=?, price = ? WHERE item =?", (quantity, price, item))
+	cur.execute("UPDATE catalog SET book_name=? WHERE book_name =? AND isbn =?", (newBookName, book_name, isbn))
 	conn.commit()
 	conn.close()
 	
-def search_db(db_name, item):
+def search_db(db_name, book_name, isbn):
 	conn = sqlite3.connect(db_name)
 	cur = conn.cursor()
-	cur.execute("SELECT * FROM store WHERE item =?", (item,))
+	cur.execute("SELECT * FROM catalog WHERE book_name =? AND isbn=?", (book_name, isbn))
 	rows = cur.fetchall()
 	conn.close()
 	return rows
