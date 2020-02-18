@@ -49,6 +49,15 @@ search.grid(row = 1, column = 2)
 add = Button(window, height = 1, width = 5, text = "Add") 
 add.grid(row = 2, column = 2)
 
+update = Button(window, height = 1, width = 5, text = "Update") 
+update.grid(row = 3, column = 2)
+
+delete = Button(window, height = 1, width = 5, text = "Delete") 
+delete.grid(row = 4, column = 2)
+
+close = Button(window, height = 1, width = 5, text = "Close") 
+close.grid(row = 5, column = 2)
+
 
 
 
