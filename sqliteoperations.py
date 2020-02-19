@@ -38,10 +38,10 @@ def delete(db_name, book_name, isbn):
 	conn.commit()
 	conn.close()
 
-def update(db_name, newBookName, book_name, isbn):
+def update(db_name, newBookName, newIsbn, book_name, isbn):
 	conn = sqlite3.connect(db_name)
 	cur = conn.cursor()
-	cur.execute("UPDATE catalog SET book_name=? WHERE book_name =? AND isbn =?", (newBookName, book_name, isbn))
+	cur.execute("UPDATE catalog SET book_name=?  AND isbn=? WHERE book_name =? AND isbn =?", (newBookName, newIsbn, book_name, isbn))
 	conn.commit()
 	conn.close()
 	
