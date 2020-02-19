@@ -29,7 +29,8 @@ def showAllFromCatalog():
 		mangaList.insert(END, "{} {}".format(book, isbn))
 
 def deleteFromCatalog():
-	delete("mangadb.db", title_val.get(), isbn_val.get())
+	if not manga_search():
+		delete("mangadb.db", title_val.get(), isbn_val.get())
 
 
 create_table("mangadb.db")
@@ -83,7 +84,7 @@ add_entry.grid(row = 3, column = 4)
 update_entry = Button(window, height = 1, width = 5, text = "Update") 
 update_entry.grid(row = 4, column = 4)
 
-delete_entry = Button(window, height = 1, width = 5, text = "Delete") 
+delete_entry = Button(window, height = 1, width = 5, text = "Delete", command = deleteFromCatalog) 
 delete_entry.grid(row = 5, column = 4)
 
 close = Button(window, height = 1, width = 5, text = "Close") 
