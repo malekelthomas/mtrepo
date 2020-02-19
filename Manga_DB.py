@@ -33,7 +33,7 @@ def showAllFromCatalog():
 def deleteFromCatalog():
 	if manga_search():
 		mangaList.delete(0, END)
-		mangaList.insert(END, "{} deleted from catalog".format(title_val.get())
+		mangaList.insert(END, "{} deleted from catalog".format(title_val.get()))
 		delete("mangadb.db", title_val.get(), isbn_val.get())
 
 
@@ -66,7 +66,7 @@ sb.grid(row = 1, column = 1)
 
 #listbox
 
-mangaList = Listbox(window, height = 10, width = 20, yscrollcommand = sb.set)
+mangaList = Listbox(window, height = 10, width = 25, yscrollcommand = sb.set)
 mangaList.grid(row = 1, column = 0)
 
 
