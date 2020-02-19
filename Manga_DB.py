@@ -10,7 +10,7 @@ def manga_search():
 	if books != []:
 		mangaList.delete(0, END)
 		for book, isbn in books:
-			mangaList.insert(END, book+" "+isbn)
+			mangaList.insert(END, "{} {}".format(book, isbn))
 		return True
 	else:
 		if len(mangaList.get(0, END)) == 0:
@@ -28,7 +28,6 @@ def showAllFromCatalog():
 	catalog = view("mangadb.db")
 	mangaList.delete(0, END)
 	for book, isbn in catalog:
-		print(book, isbn)
 		#pattern = r"{([\w\-\s]*)}\s{(\d*)}"
 		#result = re.match(pattern, book)
 		mangaList.insert(END, "{} {}".format(book, isbn))
