@@ -2,6 +2,7 @@
 
 from tkinter import *
 from sqliteoperations import *
+import re
 
 
 def manga_search():
@@ -26,7 +27,10 @@ def showAllFromCatalog():
 	catalog = view("mangadb.db")
 	mangaList.delete(0, END)
 	for book in catalog:
-		mangaList.insert(END, book)
+		pattern = r"{([\w\-\s]*)}\s{(\d*)}"
+		result = re.match(pattern, book)
+		if result:
+			mangaList.insert(END, "{} {}".format(result.group(1), result.group(2)))
 
 
 create_table("mangadb.db")
