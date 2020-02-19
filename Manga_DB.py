@@ -20,6 +20,8 @@ def manga_search():
 
 def addManga():
 	if not manga_search():
+		mangaList.delete(0, END)
+		mangaList.insert(END, "{} added to catalog".format(title_val))
 		insert("mangadb.db", title_val.get(), isbn_val.get())
 
 def showAllFromCatalog():
@@ -30,6 +32,8 @@ def showAllFromCatalog():
 
 def deleteFromCatalog():
 	if manga_search():
+		mangaList.delete(0, END)
+		mangaList.insert(END, "{} deleted from catalog".format(title_val))
 		delete("mangadb.db", title_val.get(), isbn_val.get())
 
 
