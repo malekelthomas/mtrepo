@@ -29,7 +29,7 @@ def showAllFromCatalog():
 		mangaList.insert(END, "{} {}".format(book, isbn))
 
 def deleteFromCatalog():
-	if not manga_search():
+	if manga_search():
 		delete("mangadb.db", title_val.get(), isbn_val.get())
 
 
