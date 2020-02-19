@@ -19,7 +19,7 @@ def manga_search():
 		return False
 
 def addManga():
-	if !manga_search():
+	if not manga_search():
 		insert("mangadb.db", title_val.get(), isbn_val.get())
 
 def showAllFromCatalog():
