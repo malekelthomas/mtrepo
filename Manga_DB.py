@@ -24,9 +24,10 @@ def addManga():
 
 def showAllFromCatalog():
 	catalog = view("mangadb.db")
+	mangaList.delete(0, END)
 	for book in catalog:
 		mangaList.insert(END, book)
-	
+
 
 create_table("mangadb.db")
 
@@ -67,13 +68,13 @@ sb.config(command=mangaList.yview)
 
 #view all, search, add, update, delete, close buttons
 
-viewALL = Button(window, height = 1, width = 5, text = "View All") 
+viewALL = Button(window, height = 1, width = 5, text = "View All", command = showAllFromCatalog) 
 viewALL.grid(row = 1, column = 4)
 
 search = Button(window, height = 1, width = 5, text = "Search", command = manga_search) 
 search.grid(row = 2, column = 4)
 
-add_entry = Button(window, height = 1, width = 5, text = "Add") 
+add_entry = Button(window, height = 1, width = 5, text = "Add", command = addManga) 
 add_entry.grid(row = 3, column = 4)
 
 update_entry = Button(window, height = 1, width = 5, text = "Update") 
