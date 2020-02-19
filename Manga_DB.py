@@ -5,19 +5,28 @@ from sqliteoperations import *
 
 
 def manga_search():
-	books = search_db("mangadb.db", title_val.get())
+	books = search_db("mangadb.db", title_val.get(), isbn_val.get())
 	if books != []:
 		mangaList.delete("1.0", END)
 		mangaList.insert(END, books)
+		return True
 	else:
 		if len(mangaList.get(0, END)) == 0:
 			mangaList.insert(END, "Book not found")
 		else:
 			mangaList.delete(0, END)
 			mangaList.insert(END, "Book not found")
+		return False
 
 def addManga():
-	pass
+	if !manga_search():
+		insert("mangadb.db", title_val.get(), isbn_val.get())
+
+def showAllFromCatalog():
+	catalog = view("mangadb.db")
+	for book in catalog:
+		mangaList.insert(END, book)
+	
 
 create_table("mangadb.db")
 
