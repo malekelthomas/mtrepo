@@ -23,6 +23,9 @@ def addManga():
 		mangaList.delete(0, END)
 		mangaList.insert(END, "{} added to catalog".format(title_val.get()))
 		insert("mangadb.db", title_val.get(), isbn_val.get())
+	else:
+		mangaList.delete(0, END)
+		mangaList.insert(END, "{} already in catalog".format(title_val.get()))
 
 def showAllFromCatalog():
 	catalog = view("mangadb.db")
