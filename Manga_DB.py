@@ -40,6 +40,12 @@ def deleteFromCatalog():
 		delete("mangadb.db", title_val.get(), isbn_val.get())
 
 
+def updateManga():
+	if manga_search():
+		mangaList.delete(0, END)
+		mangaList.insert(END, "Manga and ISBN updated")
+		update("mangadb.db", title_val.get(), isbn_val.get()) #fix
+
 create_table("mangadb.db")
 
 window = Tk()
