@@ -65,7 +65,7 @@ title = Entry(window, textvariable = title_val)
 title.grid(row = 0, column = 1)
 
 isbn_val = StringVar()
-isbn = Entry(window, textvariable = title_val)
+isbn = Entry(window, textvariable = isbn_val)
 isbn.grid(row = 0, column = 3)
 
 #scrollbar for list
