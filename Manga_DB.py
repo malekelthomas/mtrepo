@@ -4,28 +4,42 @@ from tkinter import *
 from sqliteoperations import *
 
 def manga_search():
-	books = search_db("mangadb.db", title_val.get(), isbn_val.get())
-	if books != []:
+	if isbn_val.get() == "":
 		mangaList.delete(0, END)
-		for book, isbn in books:
-			mangaList.insert(END, "{} {}".format(book, isbn))
-		return True
+		mangaList.insert(END, "Enter ISBN")
+	elif title_val.get() == "":
+		mangaList.delete(0, END)
+		mangaList.insert(END, "Enter manga name")
 	else:
-		if len(mangaList.get(0, END)) == 0:
-			mangaList.insert(END, "Book not found")
-		else:
+		books = search_db("mangadb.db", title_val.get(), isbn_val.get())
+		if books != []:
 			mangaList.delete(0, END)
-			mangaList.insert(END, "Book not found")
-		return False
+			for book, isbn in books:
+				mangaList.insert(END, "{}    {}".format(book, isbn))
+			return True
+		else:
+			if len(mangaList.get(0, END)) == 0:
+				mangaList.insert(END, "Book not found")
+			else:
+				mangaList.delete(0, END)
+				mangaList.insert(END, "Book not found")
+			return False
 
 def addManga():
-	if not manga_search():
+	if isbn_val.get() == "":
 		mangaList.delete(0, END)
-		mangaList.insert(END, "{} added to catalog".format(title_val.get()))
-		insert("mangadb.db", title_val.get(), isbn_val.get())
+		mangaList.insert(END, "Enter ISBN")
+	elif title_val.get() == "":
+		mangaList.delete(0, END)
+		mangaList.insert(END, "Enter manga name")
 	else:
-		mangaList.delete(0, END)
-		mangaList.insert(END, "{} already in catalog".format(title_val.get()))
+		if not manga_search():
+			mangaList.delete(0, END)
+			mangaList.insert(END, "{} added to catalog".format(title_val.get()))
+			insert("mangadb.db", title_val.get(), isbn_val.get())
+		else:
+			mangaList.delete(0, END)
+			mangaList.insert(END, "{} already in catalog".format(title_val.get()))
 
 def showAllFromCatalog():
 	catalog = view("mangadb.db")
@@ -34,13 +48,21 @@ def showAllFromCatalog():
 		mangaList.insert(END, "{} {}".format(book, isbn))
 
 def deleteFromCatalog():
-	if manga_search():
+	if isbn_val.get() == "":
 		mangaList.delete(0, END)
-		mangaList.insert(END, "{} deleted from catalog".format(title_val.get()))
-		delete("mangadb.db", title_val.get(), isbn_val.get())
+		mangaList.insert(END, "Enter ISBN")
+	elif title_val.get() == "":
+		mangaList.delete(0, END)
+		mangaList.insert(END, "Enter manga name")
+	else:
+		if manga_search():
+			mangaList.delete(0, END)
+			mangaList.insert(END, "{} deleted from catalog".format(title_val.get()))
+			delete("mangadb.db", title_val.get(), isbn_val.get())
 
 
 def updateManga():
+	
 	if manga_search():
 		mangaList.delete(0, END)
 		mangaList.insert(END, "Manga and ISBN updated")
@@ -75,7 +97,7 @@ sb.grid(row = 1, column = 1)
 
 #listbox
 
-mangaList = Listbox(window, height = 10, width = 25, yscrollcommand = sb.set)
+mangaList = Listbox(window, height = 10, width = 35, yscrollcommand = sb.set)
 mangaList.grid(row = 1, column = 0)
 
 
