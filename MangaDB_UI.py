@@ -1,56 +1,6 @@
-#!/usr/bin/env python3
-
 from tkinter import *
-from sqliteoperations import *
-import os
+from Manga_DB import *
 
-def manga_search():
-	books = search_db("mangadb.db", title_val.get(), isbn_val.get())
-	if books != []:
-		mangaList.delete(0, END)
-		for book, isbn in books:
-			mangaList.insert(END, "{} {}".format(book, isbn))
-		return True
-	else:
-		if len(mangaList.get(0, END)) == 0:
-			mangaList.insert(END, "Book not found")
-		else:
-			mangaList.delete(0, END)
-			mangaList.insert(END, "Book not found")
-		return False
-
-def addManga():
-	if not manga_search():
-		mangaList.delete(0, END)
-		mangaList.insert(END, "{} added to catalog".format(title_val.get()))
-		insert("mangadb.db", title_val.get(), isbn_val.get())
-	else:
-		mangaList.delete(0, END)
-		mangaList.insert(END, "{} already in catalog".format(title_val.get()))
-
-def showAllFromCatalog():
-	catalog = view("mangadb.db")
-	mangaList.delete(0, END)
-	for book, isbn in catalog:
-		mangaList.insert(END, "{} {}".format(book, isbn))
-
-def deleteFromCatalog():
-	if manga_search():
-		mangaList.delete(0, END)
-		mangaList.insert(END, "{} deleted from catalog".format(title_val.get()))
-		delete("mangadb.db", title_val.get(), isbn_val.get())
-
-
-def updateManga():
-	if manga_search():
-		mangaList.delete(0, END)
-		mangaList.insert(END, "Manga and ISBN updated")
-		update("mangadb.db", title_val.get(), isbn_val.get()) #fix
-
-def initDB():
-	if not os.path.exists("mangadb.db"):
-		create_table("mangadb.db")
-	
 initDB()
 
 window = Tk()
@@ -109,4 +59,3 @@ close = Button(window, height = 1, width = 5, text = "Close")
 close.grid(row = 6, column = 4)
 
 window.mainloop()
-
