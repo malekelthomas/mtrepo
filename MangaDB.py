@@ -18,11 +18,11 @@ def addManga(title_val, isbn_val):
 		return False
 
 def deleteFromCatalog(title_val, isbn_val):
-	if manga_search():
+	if manga_search(title_val, isbn_val):
 		delete("mangadb.db", title_val.get(), isbn_val.get())
 
 def updateManga(title_val, isbn_val):
-	if manga_search():
+	if manga_search(title_val, isbn_val):
 		update("mangadb.db", title_val.get(), isbn_val.get())
 
 def initDB():
