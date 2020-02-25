@@ -51,16 +51,16 @@ sb.config(command=mangaList.yview)
 viewALL = Button(window, height = 1, width = 5, text = "View All", command = showAllFromCatalog) 
 viewALL.grid(row = 1, column = 4)
 
-search = Button(window, height = 1, width = 5, text = "Search", command = manga_search(title_val, isbn_val)) 
+search = Button(window, height = 1, width = 5, text = "Search", command = lambda x = title_val, y=isbn_val:manga_search(x,y)) 
 search.grid(row = 2, column = 4)
 
-add_entry = Button(window, height = 1, width = 5, text = "Add", command = addManga(title_val, isbn_val)) 
+add_entry = Button(window, height = 1, width = 5, text = "Add", command = lambda x = title_val, y=isbn_val:addManga(x,y)) 
 add_entry.grid(row = 3, column = 4)
 
 update_entry = Button(window, height = 1, width = 5, text = "Update") 
 update_entry.grid(row = 4, column = 4)
 
-delete_entry = Button(window, height = 1, width = 5, text = "Delete", command = deleteFromCatalog(title_val, isbn_val)) 
+delete_entry = Button(window, height = 1, width = 5, text = "Delete", command = lambda x = title_val, y=isbn_val:deleteFromCatalog(x,y)) 
 delete_entry.grid(row = 5, column = 4)
 
 close = Button(window, height = 1, width = 5, text = "Close") 
