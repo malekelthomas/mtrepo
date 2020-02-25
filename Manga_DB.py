@@ -73,6 +73,7 @@ def initDB():
 	if not os.path.exists("mangadb.db"):
 		create_table("mangadb.db")
 	
+"""
 initDB()
 
 window = Tk()
@@ -132,3 +133,4 @@ close.grid(row = 6, column = 4)
 
 window.mainloop()
 
+"""
