@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link href="/normalize.css" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Caveat+Brush&display=swap" rel="stylesheet">
+
+	<title>Contact Me</title>
+	<style>
+		html{
+			height: 100%;
+			width:100%;
+		}
+		header{
+			text-align: center;
+			color: white;
+		}
+		body{
+			height: 100%;
+			width: 100%;
+			margin: 0 auto;
+
+			background: url("Caves_for_space_exploration.jpg");
+			background-position: center;
+			/*background-position: center;
+			/*background-repeat: no-repeat; /*got rid of verticl tiling*/
+			 /*fill page width*/
+		}
+		img{
+			border: 10px solid white;
+			border-radius: 360px;
+		}
+		h1{
+			font-size: 70px;
+			font-family: 'Caveat Brush';
+		}
+		a{
+			color: white;
+			font-family: 'Helvetica';
+		}
+		ul{
+			padding: 10px;
+			background: rgba(0, 225, 150, 0.5);
+		}
+		li{
+			display: inline;
+			padding: 0px 10px 0px 10px;
+		}
+		p{
+			max-width: 500px;
+			text-align: center;
+			color: white;
+			font-size: 20px;
+			font-family: 'PT Sans', sans-serif;
+			margin:0 auto;
+			background-position: center;
+		}
+		.link{
+			cursor:pointer;
+		}
+		.description{ 
+			display: none;
+			position: absolute;
+			border:1px solid #000;
+			left: 100px;
+			width:100%;
+			height:100%;
+			
+			z-index: 1;
+			margin: 0 auto;
+		}
+
+		#am{/*shrink to thumbnail w/ no interactions*/
+			pointer-events: none;
+			-webkit-transform: translate(-200px,-200px) scale(.2, .2);
+			-moz-transform: translate(-200px,-200px) scale(.2, .2);
+			-o-transform: translate(-200px,-200px) scale(.2, .2);
+			-ms-transform: translate(-200px,-200px) scale(.2, .2);
+			transform: translate(-200px,-290px) scale(.25, .25);
+			background-size: cover;
+			background-position: center;
+			overflow: hidden;
+		}
+
+		#cm{
+			pointer-events: none;
+			-webkit-transform: translate(-200px,-200px) scale(.2, .2);
+			-moz-transform: translate(-200px,-200px) scale(.2, .2);
+			-o-transform: translate(-200px,-200px) scale(.2, .2);
+			-ms-transform: translate(-200px,-200px) scale(.2, .2);
+			transform: translate(-100px,-290px) scale(.25, .25);
+			overflow: hidden;
+
+		}
+
+		#ap{
+			pointer-events: all;
+			-webkit-transform: translate(-200px,-200px) scale(.2, .2);
+			-moz-transform: translate(-200px,-200px) scale(.2, .2);
+			-o-transform: translate(-200px,-200px) scale(.2, .2);
+			-ms-transform: translate(-200px,-200px) scale(.2, .2);
+			transform: translate(90px,-290px) scale(.25, .25);
+			background-size: cover;
+			background-position: center;
+			overflow: auto;
+		}
+
+		@media (max-width: 500px) {
+      	h1 {
+        	font-size: 36px;
+        	padding: 5px;
+      	}
+      	li {
+        	padding: 5px;
+        	display: block;
+      	}
+      	#am{
+      		-webkit-transform: translate(-200px,-200px) scale(.2, .2);
+			-moz-transform: translate(-200px,-200px) scale(.2, .2);
+			-o-transform: translate(-200px,-200px) scale(.2, .2);
+			-ms-transform: translate(-200px,-200px) scale(.2, .2);
+			transform: translate(-200px,-290px) scale(.25, .25);
+      	}
+      	#cm{
+      		-webkit-transform: translate(-200px,-200px) scale(.2, .2);
+			-moz-transform: translate(-200px,-200px) scale(.2, .2);
+			-o-transform: translate(-200px,-200px) scale(.2, .2);
+			-ms-transform: translate(-200px,-200px) scale(.2, .2);
+			transform: translate(-200px,-300px) scale(.25, .25);
+      	}
+      	#ap{
+      		-webkit-transform: translate(-200px,-200px) scale(.2, .2);
+			-moz-transform: translate(-200px,-200px) scale(.2, .2);
+			-o-transform: translate(-200px,-200px) scale(.2, .2);
+			-ms-transform: translate(-200px,-200px) scale(.2, .2);
+			transform: translate(-200px,-350px) scale(.25, .25);
+      	}
+    	}
+
+
+	</style>
+
+</head>
+
+
+<body>
+	<header>
+		<img src="https://i.imgur.com/BCdEj6B.png">
+		<h1>Maleke's Cave</h1>
+		<ul>
+			<li><a class = "link" href="aboutme.html" onmouseover=aboutMePreview() onmouseout=aboutMeHide()>About Me<iframe id="am" class="description" src="aboutme.html" height="100%" width="100%" scrolling="no"></iframe></a></li>
+			
+			<li><a class = "link" href="contactme.html" onmouseover=contactMePreview() onmouseout=contactMeHide()>Contact Me<iframe id="cm" class="description" src="contactme.html" scrolling="no"></iframe></a></li>
+			
+			<li><a class = "link" href="https://www.instagram.com/lekedraws" onmouseover=artPagePreview() onmouseout=artPageHide()>Art Page<iframe id="ap" class="description" src="https://www.instagram.com/p/B83AmvFhVne/embed" scrolling="no"></iframe></a></li>
+		</ul>
+	</header>
+	<p>Email: malekelthomas97@gmail.com<br />
+			Cell: 520-401-6979<br />
+			LinkedIn:<a href="https://www.linkedin.com/in/maleke-thomas-7b10471a0"> Maleke Thomas</a></p>
+
+	</p>
+	<script> 
+	/*$(".aboutMe").mouseover(function() {
+		$(this).children(".description").show();
+	}).mouseout(function(){
+		$(this).children(".description").hide();
+	});*/
+	function aboutMePreview(){
+		document.getElementById("am").style.display = "block";
+	}
+
+	function aboutMeHide(){
+		document.getElementById("am").style.display = "none";
+	}
+
+	function contactMePreview(){
+		document.getElementById("cm").style.display = "block";
+	}
+
+	function contactMeHide(){
+		document.getElementById("cm").style.display = "none";
+	}
+
+	function artPagePreview(){
+		document.getElementById("ap").style.display = "block";
+	}
+
+	function artPageHide(){
+		document.getElementById("ap").style.display = "none";
+	}
+	
+
+
+	</script>
+
+</body>
+
+</html>
+
