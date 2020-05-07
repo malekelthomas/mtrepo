@@ -1,6 +1,7 @@
 class ticTacToeBoard():
 	def __init__(self):
 		self.board = [["|_|", "|_|", "|_|"],["|_|", "|_|", "|_|"],["|_|", "|_|", "|_|"]]
+	
 	def drawBoard(self):	
 		for i in range(len(self.board)):
 			for j in range(len(self.board[i])):
@@ -10,32 +11,48 @@ class ticTacToeBoard():
 				break
 			print("\n-----------")
 	
-	def addToBoard(self,xoro, x, y):
+	def addToBoard(self, xoro, x, y):
 		self.board[x][y] = xoro
     
-    def gameFinished(self):
-    	if '|_|' in self.board:
-    		return True
-    	else:
-    		return False
+	def gameNotFinished(self):
+		if '|_|' in self.board:
+			return True
+		else:
+			return False
 
 class ticTacToePlayer():
 	def __init__(self, name):
 		self.name = name
 		self.score = 0
+	
 	def addToScore(self):
 		self.score+=1
 
 class ticTacToeGame():
 	def __init__(self):
-	self.board = ticTacToeBoard()		
+		self.board = ticTacToeBoard()
+		self.players = []
+		self.scoreBoard = []
+	
+	def startGame(self):
+		x = input("Player 1 name?: ")
+		self.players.append(ticTacToePlayer(x))
+
+		y = input("Player 2 name?: ")
+		self.players.append(ticTacToePlayer(y))
+		print(self.board.gameNotFinished())
+		while self.board.gameNotFinished():
+			self.board.drawBoard()
+
+
+
+
+
 
 
 def main():
-	ticTac = ticTacToeBoard()
-	
-	while '|_|' in ticTac.board[0]:
-		x = input(Player 1)
+	x = ticTacToeGame()
+	x.startGame()
 if __name__ == '__main__':
 	main()
 
