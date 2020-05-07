@@ -15,7 +15,7 @@ class ticTacToeBoard():
 		self.board[x][y] = xoro
     
 	def gameNotFinished(self):
-		if '|_|' in self.board:
+		if '|_|' in self.board[0]:
 			return True
 		else:
 			return False
@@ -40,7 +40,8 @@ class ticTacToeGame():
 
 		y = input("Player 2 name?: ")
 		self.players.append(ticTacToePlayer(y))
-		print(self.board.gameNotFinished())
+
+		
 		while self.board.gameNotFinished():
 			self.board.drawBoard()
 
