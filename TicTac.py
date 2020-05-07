@@ -32,18 +32,27 @@ class ticTacToeGame():
 	def __init__(self):
 		self.board = ticTacToeBoard()
 		self.players = []
-		self.scoreBoard = []
 	
 	def startGame(self):
-		x = input("Player 1 name?: ")
-		self.players.append(ticTacToePlayer(x))
+		player1 = input("Player 1 name?: ")
+		self.players.append(ticTacToePlayer(player1))
 
-		y = input("Player 2 name?: ")
-		self.players.append(ticTacToePlayer(y))
+		player2 = input("Player 2 name?: ")
+		self.players.append(ticTacToePlayer(player2))
 
 		
 		while self.board.gameNotFinished():
+			print("Players:", self.players[0].name, self.players[1].name,)
+			print("Score: ", self.players[0].score, self.players[1].score)
 			self.board.drawBoard()
+			player1move = input(self.players[0].name+" , where do you want to place X?")
+			print("..placing")
+			self.board.drawBoard()
+			player2move = input(self.players[1].name+" , where do you want to place O?")
+			print("..placing")
+			self.board.drawBoard()
+
+
 
 
 
