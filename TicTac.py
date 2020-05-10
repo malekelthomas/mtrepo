@@ -66,8 +66,6 @@ class ticTacToeGame():
 
 
 
-
-
 def main():
 	x = ticTacToeGame()
 	x.startGame()
