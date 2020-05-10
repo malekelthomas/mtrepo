@@ -1,6 +1,8 @@
+clearedBoard = [["|_|", "|_|", "|_|"],["|_|", "|_|", "|_|"],["|_|", "|_|", "|_|"]]
+
 class ticTacToeBoard():
 	def __init__(self):
-		self.board = [["|_|", "|_|", "|_|"],["|_|", "|_|", "|_|"],["|_|", "|_|", "|_|"]]
+		self.board = clearedBoard
 	
 	def drawBoard(self):	
 		for i in range(len(self.board)):
@@ -25,9 +27,13 @@ class ticTacToePlayer():
 		self.name = name
 		self.score = 0
 		self.xoro = xoro
-
+		self.moves = []
+		
 	def addToScore(self):
 		self.score+=1
+		
+	def addMove(self, move):
+		self.moves.append(move)
 
 class ticTacToeGame():
 	def __init__(self):
@@ -35,8 +41,11 @@ class ticTacToeGame():
 		self.players = []
 	
 	def inputToMove(self, move):
-		x = move
-		return move.split(",")
+		
+		moveList = move.split(",")
+		mapToInt = map(int, moveList)
+		
+		return list(mapToInt)
 
 	def startGame(self):
 		player1 = input("Player 1 name?: ")
@@ -52,11 +61,12 @@ class ticTacToeGame():
 			print("Score: ", self.players[0].score, self.players[1].score)
 			self.board.drawBoard()
 			player1move = self.inputToMove(input(self.players[0].name+" , where do you want to place X?"))
-			self.board.addToBoard("X", int(player1move[0]), int(player1move[1]))
+			
+			self.board.addToBoard("X", player1move[0], player1move[1])
 			print("..placing")
 			self.board.drawBoard()
 			player2move = self.inputToMove(input(self.players[1].name+" , where do you want to place O?"))
-			self.board.addToBoard("O", int(player2move[0]), int(player2move[1]))
+			self.board.addToBoard("O", player2move[0], player2move[1])
 			print("..placing")
 			self.board.drawBoard()
 
